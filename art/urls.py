@@ -1,16 +1,9 @@
-# api/urls.py
-from django.contrib import admin
-from django.urls import path, include
-
-# Import settings and static
-from django.conf import settings
-from django.conf.urls.static import static
+# art/urls.py
+from django.urls import path
+from art.views import ArtView
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('art.urls')),
+    # This will now correspond to the URL /art/
+    path('', ArtView.index, name='home'),
+    path('get/', ArtView.get, name='askart'),
 ]
-
-# Add this line to serve media files during development
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -49,7 +49,7 @@
           </div>
         </header>
           <div class="flex-1 overflow-y-auto">
-        {% for user, art in chat_pairs %}
+        {% comment %} {% for user, art in chat_pairs %}
         <div class="px-40 flex flex-1 justify-center py-5">
           <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
        
@@ -81,13 +81,13 @@
 
 {% else %}
   <p>No art has been generated yet.</p>
-{% endif %}
-            {% comment %} </div> {% endcomment %}
+{% endif %} 
+            {% comment %} </div> 
             </div>
             </div>
-            {% endfor %}
+            {% endfor %} {% endcomment %}
            <footer class="sticky bottom-0 z-20 bg-[#10231c] px-4 py-3 shrink-0">
-            <form method="GET" action="/asked/" class="flex items-center gap-3 w-full">
+            <form method="GET" action="/get/" class="flex items-center gap-3 w-full">
                 <input id="prompt" name="prompt" type="text" placeholder="Enter a prompt here" class="flex-1 w-full min-w-0 resize-none overflow-hidden rounded-xl text-white focus:outline-0 focus:ring-0 border-none bg-[#214a3c] h-12 placeholder:text-[#8ecdb7] px-4 text-base font-normal leading-normal" autocomplete="off">
                 <button type="submit" id="send-button" class="flex items-center justify-center p-1.5 text-[#8ecdb7] hover:text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
@@ -95,6 +95,13 @@
                     </svg>
                 </button>
             </form>
+            {% if art %}
+    <p class="text-base font-normal leading-normal flex max-w-[360px] rounded-xl px-4 py-3 bg-[#214a3c] text-white">
+        {{ art }}
+    </p>
+    <img src="{{ MEDIA_URL }}{{ art }}" alt="Generated Art" class="max-w-full rounded-xl">
+{% endif %}
+
         </footer>
         </div>
               </div>
