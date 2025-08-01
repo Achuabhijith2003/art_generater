@@ -87,15 +87,16 @@
             </div>
             {% endfor %} {% endcomment %}
            <footer class="sticky bottom-0 z-20 bg-[#10231c] px-4 py-3 shrink-0">
-            <form method="GET" action="/get/" class="flex items-center gap-3 w-full">
-                <input id="prompt" name="prompt" type="text" placeholder="Enter a prompt here" class="flex-1 w-full min-w-0 resize-none overflow-hidden rounded-xl text-white focus:outline-0 focus:ring-0 border-none bg-[#214a3c] h-12 placeholder:text-[#8ecdb7] px-4 text-base font-normal leading-normal" autocomplete="off">
-                <button type="submit" id="send-button" class="flex items-center justify-center p-1.5 text-[#8ecdb7] hover:text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
-                        <path d="M224.29,129.41,48.35,225.35a16,16,0,0,1-22.6-22.6L49.37,128,25.75,53.25a16,16,0,0,1,22.6-22.6L224.29,126.59A8,8,0,0,1,224.29,129.41Z"></path>
-                    </svg>
-                </button>
-            </form>
-            {% if art %}
+            <form method="GET" action="{% url 'art-generator' %}" class="flex items-center gap-3 w-full">
+    <input id="prompt" name="prompt" type="text" placeholder="Enter a prompt here" class="flex-1 w-full min-w-0 resize-none overflow-hidden rounded-xl text-white focus:outline-0 focus:ring-0 border-none bg-[#214a3c] h-12 placeholder:text-[#8ecdb7] px-4 text-base font-normal leading-normal" autocomplete="off">
+    <button type="submit" id="send-button" class="flex items-center justify-center p-1.5 text-[#8ecdb7] hover:text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+            <path d="M224.29,129.41,48.35,225.35a16,16,0,0,1-22.6-22.6L49.37,128,25.75,53.25a16,16,0,0,1,22.6-22.6L224.29,126.59A8,8,0,0,1,224.29,129.41Z"></path>
+        </svg>
+    </button>
+</form>
+
+{% if art %}
     <p class="text-base font-normal leading-normal flex max-w-[360px] rounded-xl px-4 py-3 bg-[#214a3c] text-white">
         {{ art }}
     </p>

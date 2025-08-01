@@ -1,30 +1,23 @@
-from django.shortcuts import render, redirect
-from django.views.decorators.csrf import csrf_protect, csrf_exempt
-from .art_gen import generate  # Assuming this is the function to generate art
+# art/views.py
 
-# Create your views here.
+from django.shortcuts import render
+from .art_gen import generate
+import os
 
-# user_chat=['hi', 'hello', 'how are you?']
-# art_chat=['hlo', 'hlo', ' are you?']
-# user_chat=[]
-# art_chat=[]
+def art_generator_view(request):
+    art_filename = None
+    prompt = request.GET.get('prompt', None)
 
-# for i in range(len(user_chat)):
-#     print(f"User: {user_chat[i]}")
-#     print(f"Art: {art_chat[i]}")
+    if prompt:
+        print(f"Received prompt: {prompt}")
+        # The generate() function returns the full path
+        full_path = generate(prompt)
+        print(f"Generated art saved at: {full_path}")
 
-class ArtView:
-    def get( request):
-        if request.method == 'GET':
-            # Handle GET request logic here
-            prompt=request.GET.get('prompt')
-            if prompt:
-                print(f"Received prompt: {prompt}")
-                full_path=generate(prompt)  # Call the generate function with the prompt
-                # full_path='generated\generated_image_0.png'
-                print(f"Generated art saved at: {full_path}")
-        return render(request, 'index.html', {'art': full_path})
-    def index(request):
-        # Handle POST request logic here
-        return render(request, 'index.html', {})
+        # We only need the filename for the template
+        if full_path:
+            # Use os.path.basename for a reliable way to get the filename
+            art_filename = os.path.basename(full_path)
 
+    # The view will now render the page on both initial load and after a GET request
+    return render(request, 'index.html', {'art': art_filename})

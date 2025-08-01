@@ -1,9 +1,9 @@
 # art/urls.py
+
 from django.urls import path
-from art.views import ArtView
+from . import views
 
 urlpatterns = [
-    # This will now correspond to the URL /art/
-    path('', ArtView.index, name='home'),
-    path('get/', ArtView.get, name='askart'),
+    # This single path will handle both showing the form and displaying the result
+    path('', views.art_generator_view, name='art-generator'),
 ]
