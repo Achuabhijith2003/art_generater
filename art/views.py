@@ -18,6 +18,8 @@ class ArtView:
             if prompt:
                 print(f"Received prompt: {prompt}")
                 user_chat.append(prompt)
+                art_chat.append('Response to: ' + prompt)  # Simulated response
+            print(f"User chat: {user_chat} and Art chat: {art_chat}")
             chat_pairs = list(zip(user_chat, art_chat))
         return render(request, 'index.html', {'chat_pairs': chat_pairs})
     def index(request):
