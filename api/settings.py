@@ -70,7 +70,9 @@ TEMPLATES = [
 ]
 
 MEDIA_URL = '/generated/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'generated') # Changed 'media' to 'generated'
+
+
 
 WSGI_APPLICATION = 'api.wsgi.app'
 

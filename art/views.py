@@ -24,7 +24,8 @@ class ArtView:
                 print(f"Received prompt: {prompt}")
                 user_chat.append(prompt)
                 art_chat.append('Response to: ' + prompt)  # Simulated response
-                full_path=generate(prompt)  # Call the generate function with the prompt
+                # full_path=generate(prompt)  # Call the generate function with the prompt
+                full_path='generated\generated_image_0.png'
                 print(f"Generated art saved at: {full_path}")
                 art_chat[-1] = full_path
             print(f"User chat: {user_chat} and Art chat: {art_chat}")
