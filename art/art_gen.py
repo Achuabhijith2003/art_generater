@@ -59,7 +59,8 @@ def generate(promt):
         ):
             continue
         if chunk.candidates[0].content.parts[0].inline_data and chunk.candidates[0].content.parts[0].inline_data.data:
-            file_name = f"{random.randint(10000, 99999)}_generated_image"
+            # file_name = f"{random.randint(10000, 99999)}_generated_image"
+            file_name = f"generated_image_{file_index}"
             file_index += 1
             inline_data = chunk.candidates[0].content.parts[0].inline_data
             data_buffer = inline_data.data

@@ -4,8 +4,10 @@ from .art_gen import generate  # Assuming this is the function to generate art
 
 # Create your views here.
 
-user_chat=['hi', 'hello', 'how are you?']
-art_chat=['hlo', 'hlo', ' are you?']
+# user_chat=['hi', 'hello', 'how are you?']
+# art_chat=['hlo', 'hlo', ' are you?']
+user_chat=[]
+art_chat=[]
 
 for i in range(len(user_chat)):
     print(f"User: {user_chat[i]}")
@@ -15,6 +17,8 @@ class ArtView:
     def get( request):
         if request.method == 'GET':
             # Handle GET request logic here
+            user_chat=[]
+            art_chat=[]
             prompt=request.GET.get('prompt')
             if prompt:
                 print(f"Received prompt: {prompt}")

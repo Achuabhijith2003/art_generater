@@ -69,6 +69,9 @@ TEMPLATES = [
     },
 ]
 
+MEDIA_URL = '/generated/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 WSGI_APPLICATION = 'api.wsgi.app'
 
 
