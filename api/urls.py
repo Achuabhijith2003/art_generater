@@ -7,7 +7,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     # Any request to /art/ will be handled by art/urls.py
-    path('art/', include('art.urls')),
+    path('', include('art.urls')),
 ]
 
 if settings.DEBUG:
