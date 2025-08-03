@@ -7,6 +7,7 @@ import os
 def art_generator_view(request):
     art_filename = None
     prompt = request.GET.get('prompt', None)
+    text=None
 
     if prompt:
         print(f"Received prompt: {prompt}")
@@ -15,9 +16,9 @@ def art_generator_view(request):
         print(f"Generated art saved at: {full_path}")
 
         # We only need the filename for the template
-        if full_path:
-            # Use os.path.basename for a reliable way to get the filename
-            art_filename = os.path.basename(full_path)
+        # if full_path:
+        #     # Use os.path.basename for a reliable way to get the filename
+        #     art_filename = os.path.basename(full_path)
 
     # The view will now render the page on both initial load and after a GET request
-    return render(request, 'index.html', {'art': art_filename})
+    return render(request, 'index.html', {'art': full_path})
