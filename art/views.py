@@ -5,10 +5,8 @@ from .art_gen import generate
 import os
 
 def art_generator_view(request):
-    art_filename = None
     prompt = request.GET.get('prompt', None)
-    text=None
-
+    full_path = None
     if prompt:
         print(f"Received prompt: {prompt}")
         # The generate() function returns the full path
